@@ -50,6 +50,7 @@ var createTaskEl = function (taskDataObj) {
   // increase task counter for next unique id
   taskIdCounter++;
 };
+
 var createTaskActions = function (taskId) {
   var actionContainerEl = document.createElement("div");
   actionContainerEl.className = "task-actions";
@@ -73,6 +74,7 @@ var createTaskActions = function (taskId) {
   statusSelectEl.className = "select-status";
   statusSelectEl.setAttribute("name", "status-change");
   statusSelectEl.setAttribute("data-task-id", taskId);
+
   var statusChoices = ["To Do", "In Progress", "Completed"];
   for (var i = 0; i < statusChoices.length; i++) {
     // create option element
