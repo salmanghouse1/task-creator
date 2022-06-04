@@ -43,14 +43,16 @@ var createTaskEl = function (taskDataObj) {
     taskDataObj.type +
     "</span>";
   listItemEl.appendChild(taskInfoEl);
+
   var taskActionsEl = createTaskActions(taskIdCounter);
-  console.log(taskActionsEl);
+  listItemEl.appendChild(taskActionsEl);
+
+  tasksToDoEl.appendChild(listItemEl);
   tasksToDoEl.appendChild(listItemEl);
 
   // increase task counter for next unique id
   taskIdCounter++;
 };
-
 var createTaskActions = function (taskId) {
   var actionContainerEl = document.createElement("div");
   actionContainerEl.className = "task-actions";
@@ -74,7 +76,6 @@ var createTaskActions = function (taskId) {
   statusSelectEl.className = "select-status";
   statusSelectEl.setAttribute("name", "status-change");
   statusSelectEl.setAttribute("data-task-id", taskId);
-
   var statusChoices = ["To Do", "In Progress", "Completed"];
   for (var i = 0; i < statusChoices.length; i++) {
     // create option element
@@ -88,5 +89,6 @@ var createTaskActions = function (taskId) {
   actionContainerEl.appendChild(statusSelectEl);
   return actionContainerEl;
 };
+
 // submit handler for form
 formEl.addEventListener("submit", taskFormHandler);
